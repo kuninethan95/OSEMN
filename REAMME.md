@@ -407,15 +407,7 @@ Recall score improvement: +0.40569999999999995
         - For 10,000 customers, fraud's **expected cost per customer is reduced from \\$19.11 to \\$1.55**
 
 
-```python
-# Overview of model performance and business cost
-
-model_comparison = {'Model': ['Dummy', 'KNN', 'RF'], 'Total Customers': [10000, 10000, 10000], 
-     'Expected Valid Tnx':[9500, 9500,9500], 'Expected Fraud Tnx':[500,500,500],
-    'Defrauded Tnx':[250, 40, 19], 'Total Cost':[191000,30560,14516],
-    'Avg Expected Loss':[19.11, 3.27, 1.55]}
-pd.DataFrame(model_comparison)
-```
+<img src="images/model_comparison.png">
 
 
 # Intepretation
@@ -449,7 +441,7 @@ pd.DataFrame(model_comparison)
 
 # CONCLUSIONS & RECOMMENDATIONS
 
-The cryptocurrency industry feels like it is close to making a full break through into the mainstream. The market has evolved from fringe useage in the early 2010s (selling 10,000 BTC for 2 large Dominoes pizzas) to total retail hype in 2017. The market was relatively quite from 2017 to 2019 and absolutely exloded in value in 2020 when institutions began to adopt Bitcoin as a store of value (similar to gold). There have been moments of hype scattered between and plenty of interesting stories but that's the most basic gist.
+The cryptocurrency industry feels like it is close to making a full break through into the mainstream. The market has evolved from fringe useage in the early 2010s [selling 10,000 BTC for 2 large Dominoes pizzas](https://www.coindesk.com/bitcoin-pizza-10-years-laszlo-hanyecz) to total retail hype in 2017. The market was relatively quite from 2017 to 2019 and absolutely exloded in value in 2020 when institutions began to adopt Bitcoin as a store of value (similar to gold). There have been moments of hype scattered between and plenty of interesting stories but that's the most basic gist.
 
 From the retail perpsective, the two majors complaints against crypto are, 'what can I buy with it?' and 'why is it worth something?'. In my opinion, once retail useage picks up as a method of payment and store of value, the question becomes, 'how do I know it's safe?'  
 
@@ -461,5 +453,17 @@ Currently, the Random Forest Model that I have produced has an accuracy of 98%. 
 
 Ideally, wallet providers will be able to easily integrate their products with a production level model to improve security and customer satisfaction. It is a win-win. 
 
-https://www.coindesk.com/bitcoin-pizza-10-years-laszlo-hanyecz
 
+---------
+
+For more information please see the corresponding [Jupyter Notebook](https://github.com/kuninethan95/OSEMN/blob/master/index_OSEMN.ipynb) or email kunin.ethan95@gmail.com
+
+```
+├── README.md               <- The top-level README for reviewers of this project.
+├── index.ipynb             <- narrative documentation of analysis in jupyter notebook
+├── presentation.pdf        <- pdf version of project presentation
+└── images
+    └── images               <- both sourced externally and generated from code
+└── data
+    └── 
+```
