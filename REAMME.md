@@ -600,20 +600,6 @@ pd.DataFrame(model_comparison)
 # iNTERPRET
 
 
-```python
-# Bring in SHAP and JS
-# conda install -c conda-forge shap
-
-import shap 
-print(shap.__version__)
-shap.initjs()
-```
-
-    0.37.0
-
-to "+("`"+r+"`."))}return Array.isArray(t)?o(e):M.thatReturnsNull}function d(){function t(t,e,n,r,o){if(!g(t[e])){var a=w[r];return new i("Invalid "+a+" `"+o+"` supplied to "+("`"+n+"`, expected a ReactNode."))}return null}return o(t)}function v(t){function e(e,n,r,o,a){var u=e[n],c=y(u);if("object"!==c){var s=w[o];return new i("Invalid "+s+" `"+a+"` of type `"+c+"` "+("supplied to `"+r+"`, expected `object`."))}for(var l in t){var f=t[l];if(f){var p=f(u,l,r,o,a+"."+l,C);if(p)return p}}return null}return o(e)}function g(t){switch(typeof t){case"number":case"string":case"undefined":return!0;case"boolean":return!t;case"object":if(Array.isArray(t))return t.every(g);if(null===t||x.isValidElement(t))return!0;var e=k(t);if(!e)return!1;var n,r=e.call(t);if(e!==t.entries){for(;!(n=r.next()).done;)if(!g(n.value))return!1}else for(;!(n=r.next()).done;){var i=n.value;if(i&&!g(i[1]))return!1}return!0;default:return!1}}function m(t,e){return"symbol"===t||("Symbol"===e["@@toStringTag"]||"function"==typeof Symbol&&e instanceof Symbol)}function y(t){var e=typeof t;return Array.isArray(t)?"array":t instanceof RegExp?"object":m(e,t)?"symbol":e}function _(t){var e=y(t);if("object"===e){if(t instanceof Date)return"date";if(t instanceof RegExp)return"regexp"}return e}function b(t){return t.constructor&&t.constructor.name?t.constructor.name:E}var x=n(27),w=n(175),C=n(405),M=n(8),k=n(177),E=(n(1),"<<anonymous>>"),T={array:a("array"),bool:a("boolean"),func:a("function"),number:a("number"),object:a("object"),string:a("string"),symbol:a("symbol"),any:u(),arrayOf:c,element:s(),instanceOf:l,node:d(),objectOf:p,oneOf:f,oneOfType:h,shape:v};i.prototype=Error.prototype,t.exports=T},function(t,e,n){"use strict";var r="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";t.exports=r},function(t,e,n){"use strict";function r(t,e,n){this.props=t,this.context=e,this.refs=c,this.updater=n||u}function i(){}var o=n(3),a=n(97),u=n(98),c=n(38);i.prototype=a.prototype,r.prototype=new i,r.prototype.constructor=r,o(r.prototype,a.prototype),r.prototype.isPureReactComponent=!0,t.exports=r},function(t,e,n){"use strict";t.exports="15.4.2"},function(t,e,n){"use strict";function r(t){return o.isValidElement(t)?void 0:i("143"),t}var i=n(28),o=n(27);n(0);t.exports=r},function(t,e,n){"use strict";function r(t,e){return t&&"object"==typeof t&&null!=t.key?s.escape(t.key):e.toString(36)}function i(t,e,n,o){var p=typeof t;if("undefined"!==p&&"boolean"!==p||(t=null),null===t||"string"===p||"number"===p||"object"===p&&t.$$typeof===u)return n(o,t,""===e?l+r(t,0):e),1;var h,d,v=0,g=""===e?l:e+f;if(Array.isArray(t))for(var m=0;m<t.length;m++)h=t[m],d=g+r(h,m),v+=i(h,d,n,o);else{var y=c(t);if(y){var _,b=y.call(t);if(y!==t.entries)for(var x=0;!(_=b.next()).done;)h=_.value,d=g+r(h,x++),v+=i(h,d,n,o);else for(;!(_=b.next()).done;){var w=_.value;w&&(h=w[1],d=g+s.escape(w[0])+f+r(h,0),v+=i(h,d,n,o))}}else if("object"===p){var C="",M=String(t);a("31","[object Object]"===M?"object with keys {"+Object.keys(t).join(", ")+"}":M,C)}}return v}function o(t,e,n){return null==t?0:i(t,"",e,n)}var a=n(28),u=(n(15),n(174)),c=n(177),s=(n(0),n(399)),l=(n(1),"."),f=":";t.exports=o},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var i=n(41),o=r(i),a=n(182),u=r(a),c=n(183),s=r(c),l=n(181),f=r(l),p=n(180),h=r(p),d=n(179),v=r(d);(0,s.default)(),window.SHAP={SimpleListVisualizer:f.default,AdditiveForceVisualizer:h.default,AdditiveForceArrayVisualizer:v.default,React:o.default,ReactDom:u.default}}]);</script>
-
-
 
 ```python
 # Calculate SHAP values for test data
@@ -632,11 +618,11 @@ shap.summary_plot(shap_values[1],X_test_fil,max_display=40)
 
     
 ![png](output_288_0.png)
+<img src="images/output_288_0.png">
     
 
+- From EDA, it appears that higher values in Total ERC20_tnx, ERC20_unique_rec_token_name, ERC20_unique_rec_address result in valid transactions
 
-- Total ERC20_tnx, ERC20_unique_rec_token_name, ERC20_unique_rec_address are kind of difficult to tell which direction they are moving the prediction based on the SHAP Model
-    - From EDA, it appears that higher values in each category result in valid transactions
         - The more active the user is in making transactions, and receiving a variety of coins the less liklihood that the wallet user will experience fraud
         - While this may seem counter intuitive, more sophisticated users who use their wallets more often may be better prone to identifying scams and fraudulent activity
 - Time_diff_first_and_last tend to be associated with mixed values
@@ -648,87 +634,7 @@ shap.summary_plot(shap_values[1],X_test_fil,max_display=40)
 - Higher the total ether balance, less likely to report fraud
     - Wallets with higher balances may be more heavily targeted but they the owners may be more vigilant
 
-
-```python
-# !pip install lime
-from lime.lime_tabular import LimeTabularExplainer
-```
-
-
-```python
-lime_explainer =LimeTabularExplainer(
-    training_data=np.array(X_test_fil),
-    feature_names=X_test_fil.columns,
-    class_names=['Valid', 'Fraud'],
-    mode='classification'
-)
-```
-
-
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		var blob = new Blob([css], { type: "text/css" });
-
-		var oldSrc = linkElement.href;
-
-		linkElement.href = URL.createObjectURL(blob);
-
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ })
-/******/ ]);
-//# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divIP7L68AVF2XRSHM"></div>
-
-        <script>
-        var top_div = d3.select('#top_divIP7L68AVF2XRSHM').classed('lime top_div', true);
-
-            var pp_div = top_div.append('div')
-                                .classed('lime predict_proba', true);
-            var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Valid", "Fraud"], [0.9273183201551942, 0.07268167984480584]);
-
-
-        var exp_div;
-            var exp = new lime.Explanation(["Valid", "Fraud"]);
-
-                exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["erc_missing <= 0.00", -0.11282956221700266], ["Time_diff_first_last > 293728.58", -0.09868376461077277], ["Total_ERC20_tnxs > 2.00", 0.06791062120320221], ["weights_rec_no <= 0.00", -0.06579994271233834], ["Total_tnx > 49.00", -0.05426461273689242], ["Unique_Received_From_Addresses > 5.00", 0.04556272700779597], ["Sent_tnx > 11.00", -0.045494412813052325], ["Avg_min_between_received_tnx > 5442.34", -0.041632911664402604], ["ERC20_uniq_rec_addr > 2.00", 0.041542667603128254], ["ERC20_uniq_rec_token_name > 2.00", 0.0403070875740886]], 1, exp_div);
-
-        var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["Avg_min_between_sent_tnx", "17171.60", 0], ["Avg_min_between_received_tnx", "11439.07", -0.041632911664402604], ["Time_diff_first_last", "1024381.72", -0.09868376461077277], ["Sent_tnx", "45.00", -0.045494412813052325], ["Received_Tnx", "22.00", 0], ["Unique_Received_From_Addresses", "15.00", 0.04556272700779597], ["Unique_Sent_To_Addresses", "28.00", 0], ["min_value_received", "0.00", 0], ["max_value_received_", "121.00", 0], ["avg_val_received", "32.90", 0], ["min_val_sent", "0.00", 0], ["max_val_sent", "175.00", 0], ["avg_val_sent", "15.83", 0], ["Total_tnx", "67.00", -0.05426461273689242], ["total_Ether_sent", "712.40", 0], ["total_ether_received", "723.73", 0], ["total_ether_balance", "11.33", 0], ["Total_ERC20_tnxs", "89.00", 0.06791062120320221], ["ERC20_total_Ether_received", "679605.76", 0], ["ERC20_total_ether_sent", "520532.68", 0], ["ERC20_uniq_sent_addr", "13.00", 0], ["ERC20_uniq_rec_addr", "42.00", 0.041542667603128254], ["ERC20_uniq_rec_contract_addr", "46.00", 0], ["ERC20_min_val_rec", "0.00", 0], ["ERC20_max_val_rec", "280689.50", 0], ["ERC20_avg_val_rec", "10297.06", 0], ["ERC20_min_val_sent", "0.00", 0], ["ERC20_max_val_sent", "130689.50", 0], ["ERC20_avg_val_sent", "22631.86", 0], ["ERC20_uniq_sent_token_name", "14.00", 0], ["ERC20_uniq_rec_token_name", "46.00", 0.0403070875740886], ["erc_missing", "0.00", -0.11282956221700266], ["max_div_avg", "11.05", 0], ["weights_rec_large", "0.00", 0], ["weights_rec_mid", "0.00", 0], ["weights_rec_no", "0.00", -0.06579994271233834], ["weights_rec_small", "0.00", 0]], 1, raw_div);
-
-        </script>
-        </body></html>
+<img src="images/lime.png">
 
 
 - A greater time difference between first and last transaction results in a higher probability of a valid transaction
@@ -749,13 +655,9 @@ The purpose of the model I have built is to make retailers feel safe about their
 
 Since liability is purely on the user, the next best solution is to build a model that can predict with a high level of accuracy whether the marginal wallet transactions is valid or fraudulant. If the model feels the wallet is at risk, it can ping the user and let them know to be careful before releasing the funds. Safeguards like these will never be perfect, but as more data is released, they can get smarter and smarter. The model learns from features like time between first and last transaction, the size of the transactions, and the types of coins that the wallet holds. 
 
-Currently, the Random Forest Model that I have produced has an accuracy of 98%. More importantly, it has a recall of ~96%. For every 100 fraudulant transaction, it correctly classifies 96 of them. For every 100 valid transactions, it correctly classifies 99 of them. The median average transaction for fraudulant transactions is 0.5 ETH (\\$764). Customers are putting a lot of faith into wallet providers and money is on the line. If the wallet company has to compete for market share, this type of service would be a crucial value-add. 
+Currently, the Random Forest Model that I have produced has an accuracy of 98%. More importantly, it has a recall of ~96%. For every 100 fraudulant transaction, it correctly classifies 96 of them. For every 100 valid transactions, it correctly classifies 99 of them. The median average transaction for fraudulant transactions is 0.5 ETH (\$764). Customers are putting a lot of faith into wallet providers and money is on the line. If the wallet company has to compete for market share, this type of service would be a crucial value-add. 
 
 Ideally, wallet providers will be able to easily integrate their products with a production level model to improve security and customer satisfaction. It is a win-win. 
 
 https://www.coindesk.com/bitcoin-pizza-10-years-laszlo-hanyecz
 
-
-```python
-
-```
