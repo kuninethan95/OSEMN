@@ -17,126 +17,17 @@ ERC20 tokens are tokens that trade on the Ethereum blockchain and follow the ERC
 - https://ethereum.org/en/developers/docs/standards/tokens/erc-20/
 
 ----------
-The data originally came from Kaggle and be viewed [here](https://www.kaggle.com/vagifa/ethereum-frauddetection-dataset): 
-
-
-**Here is a description of the columns of the dataset:**
-
-- Index: the index number of a row
-
-- Address: the address of the ethereum account
-
-- FLAG: whether the transaction is fraud or not
-
-- Avg min between sent tnx: Average time between sent transactions for account in minutes
-
-- Avgminbetweenreceivedtnx: Average time between received transactions for account in minutes
-
-- TimeDiffbetweenfirstand_last(Mins): Time difference between the first and last transaction
-
-- Sent_tnx: Total number of sent normal transactions
-
-- Received_tnx: Total number of received normal transactions
-
-- NumberofCreated_Contracts: Total Number of created contract transactions
-
-- UniqueReceivedFrom_Addresses: Total Unique addresses from which account received transactions
-
-- UniqueSentTo_Addresses20: Total Unique addresses from which account sent transactions
-
-- MinValueReceived: Minimum value in Ether ever received
-
-- MaxValueReceived: Maximum value in Ether ever received
-
-- AvgValueReceived5Average value in Ether ever received
-
-- MinValSent: Minimum value of Ether ever sent
-
-- MaxValSent: Maximum value of Ether ever sent
-
-- AvgValSent: Average value of Ether ever sent
-
-- MinValueSentToContract: Minimum value of Ether sent to a contract
-
-- MaxValueSentToContract: Maximum value of Ether sent to a contract
-
-- AvgValueSentToContract: Average value of Ether sent to contracts
-
-- TotalTransactions(IncludingTnxtoCreate_Contract): Total number of transactions
-
-- TotalEtherSent:Total Ether sent for account address
-
-- TotalEtherReceived: Total Ether received for account address
-
-- TotalEtherSent_Contracts: Total Ether sent to Contract addresses
-
-- TotalEtherBalance: Total Ether Balance following enacted transactions
-
-- TotalERC20Tnxs: Total number of ERC20 token transfer transactions
-
-- ERC20TotalEther_Received: Total ERC20 token received transactions in Ether
-
-- ERC20TotalEther_Sent: Total ERC20token sent transactions in Ether
-
-- ERC20TotalEtherSentContract: Total ERC20 token transfer to other contracts in Ether
-
-- ERC20UniqSent_Addr: Number of ERC20 token transactions sent to Unique account addresses
-
-- ERC20UniqRec_Addr: Number of ERC20 token transactions received from Unique addresses
-
-- ERC20UniqRecContractAddr: Number of ERC20token transactions received from Unique contract addresses
-
-- ERC20AvgTimeBetweenSent_Tnx: Average time between ERC20 token sent transactions in minutes
-
-- ERC20AvgTimeBetweenRec_Tnx: Average time between ERC20 token received transactions in minutes
-
-- ERC20AvgTimeBetweenContract_Tnx: Average time ERC20 token between sent token transactions
-
-- ERC20MinVal_Rec: Minimum value in Ether received from ERC20 token transactions for account
-
-- ERC20MaxVal_Rec: Maximum value in Ether received from ERC20 token transactions for account
-
-- ERC20AvgVal_Rec: Average value in Ether received from ERC20 token transactions for account
-
-- ERC20MinVal_Sent: Minimum value in Ether sent from ERC20 token transactions for account
-
-- ERC20MaxVal_Sent: Maximum value in Ether sent from ERC20 token transactions for account
-
-- ERC20AvgVal_Sent: Average value in Ether sent from ERC20 token transactions for account
-
-- ERC20UniqSentTokenName: Number of Unique ERC20 tokens transferred
-
-- ERC20UniqRecTokenName: Number of Unique ERC20 tokens received
-
-- ERC20MostSentTokenType: Most sent token for account via ERC20 transaction
-
-- ERC20MostRecTokenType: Most received token for account via ERC20 transactions
+The data originally came from Kaggle and be viewed [here](https://www.kaggle.com/vagifa/ethereum-frauddetection-dataset)
 
 **Fraud**
 - Interpreting fraud as the wallet's owner has reported a fraudulent transaction at least once
 
-
+-------
 ## Feature Engineering
 
 An example of fraud could be a bad actor gaining access to your wallet and sending the balance or certain number of tokens to their own wallet. Characteristics of this may look like: 
 - Significantly larger max_val_sent than avg_val_sent because the hacker was flushing out their entire account in one swoop
 - Lower market cap ERC20 tokens are more likely to result in crypto scams (ie ICO bubble in 2017)
-
-
-
-
-
-]
-
-```python
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-fig, ax = plt.subplots()
-sns.boxplot(data=df_priced, x='price', ax=ax)
-ax.set_xlabel('Price');
-```
-
 
 #### ERC20 Coins Received
 
@@ -400,10 +291,6 @@ Recall score improvement: +0.40569999999999995
 - After ERC20_uniq_rec_contract_address the feature importance dips from aprox 0.08 to aprox 0.04
 
 
-
-
-    
-![png](output_227_0.png)
 <img src="images/output_227_0.png">    
 
 
@@ -431,7 +318,7 @@ Recall score improvement: +0.40569999999999995
     - Compare score before and after drop
 
 
-
+----------
 
 # Evaluate model with selected features removed
 
@@ -531,93 +418,8 @@ pd.DataFrame(model_comparison)
 ```
 
 
+# Intepretation
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Model</th>
-      <th>Total Customers</th>
-      <th>Expected Valid Tnx</th>
-      <th>Expected Fraud Tnx</th>
-      <th>Defrauded Tnx</th>
-      <th>Total Cost</th>
-      <th>Avg Expected Loss</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Dummy</td>
-      <td>10000</td>
-      <td>9500</td>
-      <td>500</td>
-      <td>250</td>
-      <td>191000</td>
-      <td>19.11000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>KNN</td>
-      <td>10000</td>
-      <td>9500</td>
-      <td>500</td>
-      <td>40</td>
-      <td>30560</td>
-      <td>3.27000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>RF</td>
-      <td>10000</td>
-      <td>9500</td>
-      <td>500</td>
-      <td>19</td>
-      <td>14516</td>
-      <td>1.55000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-# iNTERPRET
-
-
-
-```python
-# Calculate SHAP values for test data
-
-explainer = shap.TreeExplainer(rf5_clf)
-shap_values = explainer.shap_values(X_test_fil,y_test)
-```
-
-
-```python
-# Show summary plot
-
-shap.summary_plot(shap_values[1],X_test_fil,max_display=40)
-```
-
-
-    
-![png](output_288_0.png)
 <img src="images/output_288_0.png">
     
 
