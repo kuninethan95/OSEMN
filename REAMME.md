@@ -22,6 +22,8 @@ The data originally came from Kaggle and be viewed [here](https://www.kaggle.com
 **Fraud**
 - Interpreting fraud as the wallet's owner has reported a fraudulent transaction at least once
 
+<img src="images/crypto_hacks.jpg">  
+
 -------
 ## Feature Engineering
 
