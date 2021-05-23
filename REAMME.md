@@ -417,10 +417,9 @@ Recall score improvement: +0.40569999999999995
 <img src="images/output_288_0.png">
     
 
-- From EDA, it appears that higher values in Total ERC20_tnx, ERC20_unique_rec_token_name, ERC20_unique_rec_address result in valid transactions
-
-        - The more active the user is in making transactions, and receiving a variety of coins the less liklihood that the wallet user will experience fraud
-        - While this may seem counter intuitive, more sophisticated users who use their wallets more often may be better prone to identifying scams and fraudulent activity
+- Total ERC20_tnx, ERC20_unique_rec_token_name, ERC20_unique_rec_address are difficult to tell which direction they are moving the prediction based on the SHAP Model
+    - From EDA and cross-referencing LIME, it appears that:
+        - The more active the user is in making transactions, the higher the liklihood that the wallet will be defrauded
 - Time_diff_first_and_last tend to be associated with mixed values
     - Low values seem to be more correlated with fraud
 - If ERC values are missing, there is a very high liklihood of fraud
