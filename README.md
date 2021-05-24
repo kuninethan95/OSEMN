@@ -1,6 +1,6 @@
 
 
-<img src="cryptoimage.jpeg">
+<img src="images/crypto_header.jpg"> 
 
 Cyrptocurrencies have grown in popularity and market capitalization as corporations, retail investors, and individual adopt them as means of transactions and as a store of value. Bitcoin, introduced to the world in 2008 was the first cryptocurrency and still the largest as a percentage of market share. However, Ethereum and a host of other coins have been making their way into the mainstream. 
 
